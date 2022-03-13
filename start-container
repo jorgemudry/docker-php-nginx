@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Run a command if present
+# or default to starting supervisord
+if [ $# -gt 0 ]; then
+    exec "$@"
+else
+    /usr/bin/supervisord
+fi
