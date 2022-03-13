@@ -18,15 +18,15 @@ RUN useradd -ms /bin/bash -u 1000 ubuntu \
     && echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu focal main" > /etc/apt/sources.list.d/ppa_ondrej_php.list \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E5267A6C \
     && apt-get update \
-    && apt-get install -y nginx php7.4-fpm php7.4-cli \
-        php7.4-pgsql php7.4-sqlite3 php7.4-gd \
-        php7.4-curl php7.4-memcached \
-        php7.4-imap php7.4-mysql php7.4-mbstring \
-        php7.4-xml php7.4-zip php7.4-bcmath php7.4-soap \
-        php7.4-intl php7.4-readline \
-        php7.4-msgpack php7.4-igbinary  php7.4-imagick \
-        php7.4-ldap php7.4-gmp \
-        php7.4-redis \
+    && apt-get install -y nginx php7.3-fpm php7.3-cli \
+        php7.3-pgsql php7.3-sqlite3 php7.3-gd \
+        php7.3-curl php7.3-memcached \
+        php7.3-imap php7.3-mysql php7.3-mbstring \
+        php7.3-xml php7.3-zip php7.3-bcmath php7.3-soap \
+        php7.3-intl php7.3-readline \
+        php7.3-msgpack php7.3-igbinary  php7.3-imagick \
+        php7.3-ldap php7.3-gmp \
+        php7.3-redis \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && mkdir -p /run/php \
     && apt-get clean \
@@ -34,10 +34,10 @@ RUN useradd -ms /bin/bash -u 1000 ubuntu \
     && echo "daemon off;" >> /etc/nginx/nginx.conf \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log \
-    && sed -i 's/^;daemonize.*$/daemonize = no/g' /etc/php/7.4/fpm/php-fpm.conf \
-    && sed -i 's@^error_log.*$@error_log = /proc/self/fd/2@g' /etc/php/7.4/fpm/php-fpm.conf
+    && sed -i 's/^;daemonize.*$/daemonize = no/g' /etc/php/7.3/fpm/php-fpm.conf \
+    && sed -i 's@^error_log.*$@error_log = /proc/self/fd/2@g' /etc/php/7.3/fpm/php-fpm.conf
 
-COPY php/upload.ini /etc/php/7.4/fpm/conf.d/upload.ini
+COPY php/upload.ini /etc/php/7.3/fpm/conf.d/upload.ini
 COPY nginx/default /etc/nginx/sites-available/default
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY start-container /usr/local/bin/start-container
