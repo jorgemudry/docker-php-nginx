@@ -3,9 +3,7 @@ name: publish
 on:
   push:
     branches:
-      - 'master'
-    tags:
-      - '*'
+      - 'php8.1'
 
 jobs:
   publish:
