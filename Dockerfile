@@ -1,4 +1,9 @@
-FROM ubuntu:22.04
+FROM --platform=${BUILDPLATFORM:-linux/amd64} ubuntu:22.04
+
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+ARG TARGETOS
+ARG TARGETARCH
 
 LABEL maintainer="Jorge Mudry <jorgemudry@gmail.com>"
 
