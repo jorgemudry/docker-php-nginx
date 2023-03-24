@@ -52,5 +52,5 @@ jobs:
             GitCommit=${{ github.sha }}
           tags: |
             ghcr.io/${{ env.REPO_OWNER }}/php82-nginx:${{ github.sha }}
-            ghcr.io/${{ env.REPO_OWNER }}/php82-nginx:${{ env.TAG }}
+            # ghcr.io/${{ env.REPO_OWNER }}/php82-nginx:1.0.0
             ghcr.io/${{ env.REPO_OWNER }}/php82-nginx:latest
