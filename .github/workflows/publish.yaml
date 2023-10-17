@@ -3,7 +3,7 @@ name: publish
 on:
   push:
     branches:
-      - 'php7.2'
+      - 'php7.1'
 
 jobs:
   publish:
@@ -51,5 +51,5 @@ jobs:
             Version=${{  env.TAG }}
             GitCommit=${{ github.sha }}
           tags: |
-            ghcr.io/${{ env.REPO_OWNER }}/php72-nginx:${{ github.sha }}
-            ghcr.io/${{ env.REPO_OWNER }}/php72-nginx:latest
+            ghcr.io/${{ env.REPO_OWNER }}/php71-nginx:${{ github.sha }}
+            ghcr.io/${{ env.REPO_OWNER }}/php71-nginx:latest
